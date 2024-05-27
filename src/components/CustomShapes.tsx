@@ -1,11 +1,25 @@
-import React from "react";
+import * as THREE from "three";
+import React, { useRef, useState } from "react";
+import { useFrame, ThreeElements } from "@react-three/fiber";
 
-const CustomShapes = () => {
+const Box = (props: ThreeElements["mesh"]) => {
+  const meshRef = useRef<THREE.Mesh>(null!);
+  const [hovered, setHover] = useState(false);
+  const [active, setActive] = useState(false);
+  useFrame((state, delta) => (meshRef.current.rotation.x += delta));
   return (
-    <div>
-      <h2>Custom Shapes</h2>
-    </div>
+    <mesh
+      {...props}
+      ref={meshRef}
+      scale={2}
+      onClick={() => setActive(!active)}
+      onPointerOver={() => setHover(true)}
+      onPointerOut={() => setHover(false)}
+    >
+      <circleGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial color={hovered ? "blue" : "orange"} />
+    </mesh>
   );
 };
 
-export default CustomShapes;
+export default Box;

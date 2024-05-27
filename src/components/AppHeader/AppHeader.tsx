@@ -23,10 +23,10 @@ const AppHeader: React.FC = () => {
         </Typography>
 
         <div style={{ display: "flex", alignItems: "center" }}>
-          <TextField label="feedback us" variant="outlined" size="small" />
+          <TextField label="feedback us" variant="outlined" />
           <FormControl sx={{ width: 250 }}>
             <InputLabel>Language</InputLabel>
-            <Select label="Language" size="small">
+            <Select label="Language">
               {langOptions.map((option) => (
                 <MenuItem key={option.id} value={option.id}>
                   {option.name}

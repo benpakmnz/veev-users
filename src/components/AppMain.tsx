@@ -5,6 +5,7 @@ import CookiesPage from "../Pages/Cookies";
 import NotificationsPage from "../Pages/Notifications";
 import GeneralPoliciesPage from "../Pages/GeneralPolicies";
 import CustomShapes from "./CustomShapes";
+import { Canvas } from "@react-three/fiber";
 
 const AppMain: React.FC = () => {
   return (
@@ -17,7 +18,12 @@ const AppMain: React.FC = () => {
           <Route path="/general-policies" element={<GeneralPoliciesPage />} />
         </Routes>
       </BrowserRouter>
-      <CustomShapes />
+      <Canvas>
+        <ambientLight intensity={0.6} />
+        <spotLight position={[20, 10, 10]} angle={0} penumbra={10} />
+        <pointLight />
+        <CustomShapes />
+      </Canvas>
     </main>
   );
 };

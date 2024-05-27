@@ -5,7 +5,7 @@ import { Avatar, Card, CardContent, Typography } from "@mui/material";
 const UserCard = (user: IUser) => {
   const { name, nickname, photo } = user;
   return (
-    <Card>
+    <Card sx={{ width: 250 }}>
       <CardContent>
         <Avatar alt={name} src={photo} />
         <Typography gutterBottom variant="h5" component="div">
